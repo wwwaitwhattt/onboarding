@@ -59,7 +59,7 @@ function makeArmy() {
 
     for (let i = 0; i < 10; i++) {
         let shooter = function() {
-            alert(i);
+            console.log(i);
         };
         shooters.push(shooter);
     }
