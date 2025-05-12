@@ -109,7 +109,7 @@ let user1 = {
 // askPassword(?, ?); ???
 // Ваши изменения должны затрагивать только выделенный фрагмент кода.
 
-askPassword(user.login.bind(user1, true), user.login.bind(user1, false));
+askPassword(user1.login.bind(user1, true), user1.login.bind(user1, false));
 
 
 // 5 создадим функцию без контекста this, но ссылающуюся на него. 
