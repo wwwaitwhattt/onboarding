@@ -74,13 +74,16 @@ army[5](); // 5
 function makeArmy1() { // решение без замены while на for
     let shooters = [];
     let i = 0;
-    function create(j) {
-        return function() {
-        console.log(j);
-        };
-    }
+    // function create(j) {
+    //     return function() {
+    //     console.log(j);
+    //     };
+    // }
     while (i < 10) {
-        let shooter = create(i)
+        let j = i
+        let shooter = function() { // функция shooter
+            console.log(j); // должна выводить порядковый номер
+        };
         shooters.push(shooter);
         i++;
     }
