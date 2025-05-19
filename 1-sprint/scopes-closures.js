@@ -70,3 +70,24 @@ let army = makeArmy();
 
 army[0](); // 0
 army[5](); // 5
+
+function makeArmy1() { // решение без замены while на for
+    let shooters = [];
+    let i = 0;
+    function create(j) {
+        return function() {
+        console.log(j);
+        };
+    }
+    while (i < 10) {
+        let shooter = create(i)
+        shooters.push(shooter);
+        i++;
+    }
+    return shooters;
+}
+
+let army1 = makeArmy1();
+
+army1[0](); // 0
+army1[5](); // 5
