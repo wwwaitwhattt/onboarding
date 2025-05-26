@@ -66,13 +66,13 @@ function getUserData(shouldFail) {
   });
 }
 
-// getUserData(false)
-  // .then(user => console.log('User:', user))  // User: { name: 'Alice', age: 25 }
-  // .catch(err => console.error('Error:', err));
+getUserData(false)
+  .then(user => console.log('User:', user))  // User: { name: 'Alice', age: 25 }
+  .catch(err => console.error('Error:', err));
 
-// getUserData(true)
-  // .then(user => console.log('User:', user)) 
-  // .catch(err => console.error('Error:', err)); // Error: User not found
+getUserData(true)
+  .then(user => console.log('User:', user)) 
+  .catch(err => console.error('Error:', err)); // Error: User not found
 
 // 4 На основе задачи 1 добавь цепочку: после получения
 //   пользователя выведи его имя заглавными буквами, затем возраст,
