@@ -52,25 +52,21 @@ async function createPost_async() {
         userId: 1
     }
 
-    try {
-        const response = await fetch('https://jsonplaceholder.typicode.com/posts', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json;charset=utf-8'
-            },
-            body: JSON.stringify(object)
-        })
+    const response = await fetch('https://jsonplaceholder.typicode.com/posts', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json;charset=utf-8'
+        },
+        body: JSON.stringify(object)
+    })
 
-        const data = await response.json();
-        console.log(data);
-    } catch(err) {
-        console.error('error', err)
-    }
+    const data = await response.json();
+    console.log(data);
 }
 
 createPost_async() // { title: 'Hello', body: 'world', userId: 1, id: 101 }
 
-// 4 Напиши функцию getPost(id), которая делает GET-запрос на
+// 4 getPost(id), GET-запрос на
 // https://jsonplaceholder.typicode.com/posts/{id}
 // Если пост найден (status 200), выводит его.
 // Если status 404 — выводит "Пост не найден".
@@ -113,6 +109,7 @@ getPost(1) // вывод
 // ...
 // Если произошла ошибка:
 // "ошибка: [текст ошибки]"
+
 const axios = require('axios');
 
 async function fetchUsers() {
@@ -140,3 +137,69 @@ fetchUsers(); // вывод:
 // [8] Nicholas Runolfsdottir V (Sherwood@rosamond.me)
 // [9] Glenna Reichert (Chaim_McDermott@dana.io)
 // [10] Clementina DuBuque (Rey.Padberg@karina.biz)
+
+// 6 divide(a, b), которая:
+// Возвращает результат деления a / b
+// Если b === 0, выбрасывает throw new Error("Деление на ноль")
+// Добавь вызов функции с try/catch, и выведи
+// "Ошибка: [текст ошибки]", если деление невозможно.
+
+function divide(a, b) {
+    try {
+        if (b === 0) {
+            throw new Error('деление на ноль')
+        }
+        let division = a / b
+        return division
+    } catch (err) {
+        console.error('ошибка', err)
+    }
+}
+
+console.log(divide(1,0))
+// ошибка Error: деление на ноль
+// at divide (C:\Users\user\Desktop\workhard\onboarding\3-sprint\networking.js:149:19)
+// undefined
+console.log(divide(4,2)) // 2
+
+// 7 асинхронная функция fetchUserData():
+//   на https://jsonplaceholder.typicode.com/users/1
+//   Обработка ошибки
+//   В finally всегда "Завершено"
+
+async function fetchUserData(){
+    try {
+        const response = await fetch('https://jsonplaceholder.typicode.com/users/1')
+
+        if (!response.ok) {
+            throw new Error(`ошибка: ${response.status}`);
+        }
+        
+        const data = await response.json();
+        console.log(data)
+    } catch(err) {
+        console.error('error', err)
+    } finally {
+        console.log('завершено')
+    }
+}
+
+fetchUserData() // {json c user data}
+                // завершено
+
+// 8 Promise.catch
+
+function prom_catch(){
+    return new Promise((_, reject) => {
+        setTimeout(()=> {
+            reject(new Error('какая-то ошибка'))
+        }, 3000)
+    })
+}
+
+prom_catch()
+  .catch(error => {
+    console.error('error', error.message);
+  }
+); // error какая-то ошибка
+
