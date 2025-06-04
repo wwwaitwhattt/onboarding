@@ -110,23 +110,23 @@ getPost(1) // вывод
 // Если произошла ошибка:
 // "ошибка: [текст ошибки]"
 
-const axios = require('axios');
+// const axios = require('axios');
 
-async function fetchUsers() {
-  try {
-    const response = await axios.get('https://jsonplaceholder.typicode.com/users');
-    const users = response.data;
+// async function fetchUsers() {
+//   try {
+//     const response = await axios.get('https://jsonplaceholder.typicode.com/users');
+//     const users = response.data;
 
-    users.forEach(user => {
-      console.log(`[${user.id}] ${user.name} (${user.email})`);
-    });
+//     users.forEach(user => {
+//       console.log(`[${user.id}] ${user.name} (${user.email})`);
+//     });
 
-  } catch (error) {
-    console.error('ошибка:', error.message);
-  }
-}
+//   } catch (error) {
+//     console.error('ошибка:', error.message);
+//   }
+// }
 
-fetchUsers(); // вывод:
+// fetchUsers(); // вывод:
 // [1] Leanne Graham (Sincere@april.biz)
 // [2] Ervin Howell (Shanna@melissa.tv)
 // [3] Clementine Bauch (Nathan@yesenia.net)
@@ -203,3 +203,71 @@ prom_catch()
   }
 ); // error какая-то ошибка
 
+// 9 Создайте асинхронную функцию getUsers(names),
+//  которая получает на вход массив логинов пользователей GitHub,
+//  запрашивает у GitHub информацию о них и возвращает массив объектов-пользователей.
+// Информация о пользователе GitHub с логином USERNAME доступна по ссылке: https://api.github.com/users/USERNAME.
+// На каждого пользователя должен приходиться один запрос fetch.
+// Запросы не должны ожидать завершения друг друга. Надо, чтобы данные приходили как можно быстрее.
+// Если какой-то запрос завершается ошибкой или оказалось,
+// что данных о запрашиваемом пользователе нет, то функция должна возвращать null в массиве результатов.
+
+async function getUsers(names) {
+  let jobs = [];
+
+  for(let name of names) {
+    let job = fetch(`https://api.github.com/users/${name}`).then(
+      successResponse => {
+        if (successResponse.status != 200) {
+          return null;
+        } else {
+          return successResponse.json();
+        }
+      },
+      failResponse => {
+        return null;
+      }
+    );
+    jobs.push(job);
+  }
+
+  let results = await Promise.all(jobs);
+
+  return results;
+}
+
+getUsers(['iliakan', 'remy', 'no.such.users']) // вернул промис с массивом
+// 
+// {login: 'iliakan', id: 349336, node_id: 'MDQ6VXNlcjM0OTMzNg==', avatar_url: 'https://avatars.githubusercontent.com/u/349336?v=4', gravatar_id: '', …}
+// {login: 'remy', id: 13700, node_id: 'MDQ6VXNlcjEzNzAw', avatar_url: 'https://avatars.githubusercontent.com/u/13700?v=4', gravatar_id: '', …}
+//  null
+
+// 10 POST запрос, передаем объект
+// работа с заголовками
+
+async function sendSecurePost() {
+    const object = {
+        title: "Header test",
+        body: "Check the headers",
+        userId: 101
+    }
+
+    try {
+        const response = await fetch('https://jsonplaceholder.typicode.com/posts', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer mySecretToken123'
+        },
+        body: JSON.stringify(object)
+        })
+
+        const data = await response.json();
+        console.log(data)
+    } catch (err) {
+        console.error('error', err)
+    }
+}
+
+console.log('sendsecure:')
+sendSecurePost()
