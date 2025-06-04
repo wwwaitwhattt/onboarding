@@ -110,23 +110,23 @@ getPost(1) // вывод
 // Если произошла ошибка:
 // "ошибка: [текст ошибки]"
 
-// const axios = require('axios');
+const axios = require('axios');
 
-// async function fetchUsers() {
-//   try {
-//     const response = await axios.get('https://jsonplaceholder.typicode.com/users');
-//     const users = response.data;
+async function fetchUsers() {
+  try {
+    const response = await axios.get('https://jsonplaceholder.typicode.com/users');
+    const users = response.data;
 
-//     users.forEach(user => {
-//       console.log(`[${user.id}] ${user.name} (${user.email})`);
-//     });
+    users.forEach(user => {
+      console.log(`[${user.id}] ${user.name} (${user.email})`);
+    });
 
-//   } catch (error) {
-//     console.error('ошибка:', error.message);
-//   }
-// }
+  } catch (error) {
+    console.error('ошибка:', error.message);
+  }
+}
 
-// fetchUsers(); // вывод:
+fetchUsers(); // вывод:
 // [1] Leanne Graham (Sincere@april.biz)
 // [2] Ervin Howell (Shanna@melissa.tv)
 // [3] Clementine Bauch (Nathan@yesenia.net)
