@@ -1,6 +1,91 @@
 <!doctype html>
 <head>
-<script src="networking.js"></script>
+    <style>
+        .box-1 {
+            background-color: aquamarine;
+            padding: 20px;
+            margin-top: 20px;
+            border: solid 1px;
+        }
+        .box-2 {
+            background-color: rgb(176, 255, 127);
+            padding: 20px;
+            border: solid 1px;
+        }
+        .box-3 {
+            background-color: rgb(255, 202, 127);
+            padding: 20px;
+            border: solid 1px;
+        }
+
+        .todo {
+            margin-top: 20px;
+        }
+
+        .todo__list {
+            max-width: 100px;
+        }
+
+        .todo__item {
+            border: solid 1px;
+            margin-top: 2px;
+            padding: 5px;
+            text-align: center;
+        }
+
+        .is-completed {
+            background-color: rgb(0, 255, 30);
+        }
+    </style>
+<!-- <script src="networking.js"></script> -->
 </head>
 
+<body>
+    <!-- 1 -->
+    <input type="button" onclick="this.hidden=true" value="я спрячусь">
+
+    <br>
+    <!-- 2 см events.js скрывает текст при нажат-->
+    <input type="button" id="hider" value="Нажмите, чтобы спрятать текст" />
+    <div id="text">Текст</div>
+
+    <br>
+    <!-- 3 навешивание нескольких обработчиков -->
+
+    <button type="button" id = "btn">Кнопка!!!!</button>
+
+    <br>
+    <!-- 4 -->
+
+    <button class="button-1" type="button">Click me</button>
+    <button class="button-2" type="button">Удалить обработчик</button>
+
+    <br>
+    <!-- 5 всплытие и погружение -->
+    <div class="box-1">
+        box-1
+        <div class="box-2">
+            box-2
+            <div class="box-3">
+                box-3
+            </div>
+        </div>
+    </div>
+    <br>
+    <!-- 6 делегирование -->
+
+    <div class="todo">
+        <ul class="todo__list">
+            <li class="todo__item"><span>Todo item</span></li>
+            <li class="todo__item"><span>Todo item</span></li>
+            <li class="todo__item"><span>Todo item</span></li>
+            <li class="todo__item"><span>Todo item</span></li>
+            <li class="todo__item"><span>Todo item</span></li>
+        </ul>
+    </div>
+    <br>
+    <!-- 7 -->
+     <button id="someEl">кнопка для кастомного события</button>
+    <script src="events.js"></script>
+</body>
 </html>
