@@ -1,4 +1,4 @@
-import { tabsSelectors } from "./tabs.js";
+// import { tabsSelectors } from "./tabs.js";
 // import { tabsSelectors as selectors } from "./tabs" - или так
 
 const modalsSelectors = {}

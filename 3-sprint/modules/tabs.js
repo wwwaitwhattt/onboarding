@@ -1,4 +1,4 @@
-const selectors = {}
+export const selectors = {}
 
 export default function initTabs() { // default - экспорт по умолчанию
     console.log('initTabs')
@@ -6,4 +6,4 @@ export default function initTabs() { // default - экспорт по умолч
 
 // initTabs()
 
-export { selectors as tabsSelectors }
+// export { selectors as tabsSelectors }
