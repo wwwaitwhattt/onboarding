@@ -1,29 +1,22 @@
 <!doctype html>
 <head>
     <style>
+        body {
+            margin: 30px;
+        }
         form{
             max-width: 300px;
             border: 1px solid;
             padding: 20px;
         }
+        button {
+            margin-top: 10px;
+            padding: 5px;
+        }
     </style>
 </head>
 <body>
-    <!-- 1 -->
-    <!-- <form name="my">
-        <input name="one" value="1">
-        <input name="two" value="2">
-    </form> -->
-    <br>
-    <!-- 2 -->
-    <select id="genres">
-        <option value="rock">Рок</option>
-        <option value="blues" selected>Блюз</option>
-    </select>
-    <br>
-    <br>
-    <!-- 3 работа с формами -->
-    <form id="registrationForm">
+    <form id="registrationForm" action="/registration" method="post">
         <p>
             <label for="login">Логин</label>
             <input id="login" name="login" />
@@ -42,25 +35,16 @@
             <input id="male" name="gender" type="radio" value = "мужской"/>
             <label for="male">Мужской</label>
 
-            <input id="female" name="gender" type="radio" value = "женский" checked/>
+            <input id="female" name="gender" type="radio" value = "женский"/>
             <label for="female">Женский</label>
         </fieldset>
         <div>
-            <input id="agreement" name="agreement" type="checkbox" checked/>
+            <input id="agreement" name="agreement" type="checkbox"/>
             <label for="agreement">Согласие</label>
         </div>
         <button type="submit">Регистрация</button>
     </form>
-    <br>
-    <div>
-        <label for="city">Выберите город:</label>
-        <select id="city" name="city" form="registrationForm">
-            <option value="Москва">Москва</option>
-            <option value="Санкт-Петербург">Санкт-Петербург</option>
-            <option selected value="Ставрополь">Ставрополь</option>
-        </select>
-    </div>
-
-    <script src="forms.js"></script>
+    <script src="formdata.js"></script>
 </body>
+
 </html>
