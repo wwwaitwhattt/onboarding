@@ -1,0 +1,68 @@
+<!doctype html>
+<head>
+    <style>
+        body {
+            margin: 30px;
+        }
+        form{
+            max-width: 300px;
+            border: 1px solid;
+            padding: 20px;
+        }
+        button {
+            margin-top: 10px;
+            padding: 5px;
+        }
+
+        .field__errors {
+            display: flex;
+            flex-direction: column;
+            color: red;
+        }
+
+        .field__errors:empty {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <form id="registrationForm" action="/registration" method="post" novalidate data-js-form>
+        <p>
+            <label for="login">Логин</label>
+            <input id="login" name="login" required minlength="5" maxlength="16" aria-errormessage="login-error"/>
+        </p>
+        <span class="field__errors" id="login-error" data-js-form-field-errors></span>
+        <p>
+            <label for="password">Пароль</label>
+            <input id="password" name="password" type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,16}" title="в пароле должно быть от 8 до 16 символов, 1 цифра и 1 буква в нижнем и 1 буква в верхнем регистрах"
+                required
+                minlength="8"
+                maxlength="16" aria-errormessage="pass-error"/>
+        </p>
+        <span class="field__errors" id="pass-error" data-js-form-field-errors></span>
+        <p>
+            <label for="about">О себе</label>
+            <textarea id="about" name="about"></textarea>
+        </p>
+        <fieldset>
+            <legend>Ваш пол</legend>
+
+            <input id="male" name="gender" type="radio" value = "мужской" required aria-errormessage="gender-error"/>
+            <label for="male">Мужской</label>
+
+            <input id="female" name="gender" type="radio" value = "женский" required aria-errormessage="gender-error"/>
+            <label for="female">Женский</label>
+
+            <span class="field__errors" id="gender-error" data-js-form-field-errors></span>
+        </fieldset>
+        <div>
+            <input id="agreement" name="agreement" type="checkbox" required aria-errormessage="agree-error"/>
+            <label for="agreement">Согласие</label>
+            <span class="field__errors" id="agree-error" data-js-form-field-errors></span>
+        </div>
+        <button type="submit">Регистрация</button>
+    </form>
+    <script src="valid.js"></script>
+</body>
+
+</html>
