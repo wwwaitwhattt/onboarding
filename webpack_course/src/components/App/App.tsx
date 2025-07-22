@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
 import classes from './App.module.scss';
 import {Link, Outlet} from 'react-router-dom';
-import About from '../../pages/about/About';
+import About from '@/pages/about/About';
+import AvatarPng from '@/assets/explosion.png'
 
 export const App = () => {
     const [count, setCount] = useState<number>(0);
@@ -10,6 +11,9 @@ export const App = () => {
 
     return (
         <div>
+            <div>
+
+            </div>
             <Link to={'/about'}>about</Link>
             <br />
             <Link to={'/shop'}>shop</Link>
