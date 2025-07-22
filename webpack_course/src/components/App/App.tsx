@@ -2,7 +2,9 @@ import React, {useState} from 'react';
 import classes from './App.module.scss';
 import {Link, Outlet} from 'react-router-dom';
 import About from '@/pages/about/About';
-import AvatarPng from '@/assets/explosion.png'
+import explosionPng from '@/assets/explosion.png'
+import confuseBlackJpg from '@/assets/confused-icon.jpg'
+import Airplane from '@/assets/airplane.svg'
 
 export const App = () => {
     const [count, setCount] = useState<number>(0);
@@ -12,7 +14,11 @@ export const App = () => {
     return (
         <div>
             <div>
-
+                <img src={explosionPng} alt="" />
+                <img width={64} height={64} src={confuseBlackJpg} alt="" />
+            </div>
+            <div>
+                <Airplane className={classes.icon} width={128} height={128} />
             </div>
             <Link to={'/about'}>about</Link>
             <br />
