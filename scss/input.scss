@@ -1,0 +1,38 @@
+$title_h1: 48px;
+$title_h2: 32px;
+$font: "Roboto", "Arial", sans-serif;
+
+h1,
+h2
+{
+    margin: 0;
+}
+
+.main {
+	flex: 1 1 auto;
+}
+
+h1 {
+	font-size: $title_h1;
+	font-family: $font;
+}
+
+.main-block {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	gap: 50px;
+}
+
+.main-block__container {
+	padding: 10px;
+
+	p, h2 {							// вложенность + группировка
+    	color: rgb(66, 62, 62);
+  	}
+
+	h2 {
+		font-size: $title_h2;
+		font-family: $font;
+	}
+}

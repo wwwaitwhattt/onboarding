@@ -1,0 +1,33 @@
+h1,
+h2 {
+  margin: 0;
+}
+
+.main {
+  flex: 1 1 auto;
+}
+
+h1 {
+  font-size: 48px;
+  font-family: "Roboto", "Arial", sans-serif;
+}
+
+.main-block {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 50px;
+}
+
+.main-block__container {
+  padding: 10px;
+}
+.main-block__container p, .main-block__container h2 {
+  color: rgb(66, 62, 62);
+}
+.main-block__container h2 {
+  font-size: 32px;
+  font-family: "Roboto", "Arial", sans-serif;
+}
+
+/*# sourceMappingURL=output.css.map */
