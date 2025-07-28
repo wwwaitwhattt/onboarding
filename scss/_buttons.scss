@@ -1,0 +1,39 @@
+$text-size_default: 24px;
+
+@mixin button-sets {
+	padding: 10px;
+	margin-top: 20px;
+	font-size: $text-size_default;
+}
+
+.container_blue {
+    button {
+		@include button-sets();
+
+		background-color: rgb(123, 119, 234);
+
+		&:hover {
+			background-color: rgb(93, 97, 181);
+		}
+
+		&:active {
+			background-color: rgb(101, 106, 199);
+		}
+	}
+}
+
+.container_orange{
+	button {
+		@include button-sets();
+
+		background-color: rgb(251, 198, 128);
+
+		&:hover{
+			background-color: rgb(150, 118, 76);
+		}
+
+		&:active {
+			background-color: rgb(196, 154, 100);
+		}
+	}
+}
