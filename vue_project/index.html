@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task1</title>
+</head>
+<body>
+  <div id="app">
+
+      <!-- односторонее связывание-->
+      <h1> односторонее связывание, изменения только через js </h1>
+      <h2>
+          <a v-bind:href="url">{{ url }}</a>
+      </h2>
+
+      <hr>
+
+      <!-- двустороннее связывание -->
+      <h1> двустороннее связывание, изменения через js и input</h1>
+      <h2>
+          <a>{{ inText }}</a>
+      </h2>
+      <label>
+          <input type="text" v-model="inText">
+      </label>
+
+      <hr>
+
+      <!--   @ это v-on   -->
+      <h1> условный рендеринг v-if и v-else </h1>
+
+      <button @click="mood = !mood">Переключить</button>
+      <h1 v-if="mood">😀</h1>
+      <h1 v-else>😢</h1>
+
+      <h2> условные группы </h2>
+      <button @click="ok = !ok">Переключить</button>
+      <template v-if="ok">
+          <p>paragraph 1</p>
+          <p>paragraph 2</p>
+          <p>paragraph 3</p>
+      </template>
+
+      <hr>
+
+      <h1> v-show всегда отрисовывается, переключается только display </h1>
+      <p>при ok=false элемента не видно, но он фактически отрисован в DOM</p>
+      <h1 v-show="ok">Привет!</h1>
+
+      <hr>
+
+      <h1> v-for </h1>
+
+      <ul>
+          <li v-for="oneNote in notes">{{oneNote}}</li>
+      </ul>
+
+
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+  <script>
+
+      new Vue({
+          el: '#app',
+          data: {
+              url: 'http://google.com/',
+              inText: 'Text',
+              mood: false,
+              ok: false,
+              notes: ['one', 'two', 'three'],
+          }
+      })
+
+  </script>
+</body>
+</html>
