@@ -52,11 +52,12 @@
       <h1> v-for </h1>
 
       <ul>
-          <li v-for="oneNote in notes">{{oneNote}}</li>
+          <li v-for="note in notes" :key="note">{{ note }}</li>
       </ul>
 
-
-
+      <ol>
+          <li v-for="user in users"> Имя: {{ user.name }}, возраст: {{ user.age }} </li>
+      </ol>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
@@ -70,6 +71,10 @@
               mood: false,
               ok: false,
               notes: ['one', 'two', 'three'],
+              users: [
+                  {name: 'alina', age: 21},
+                  {name: 'steph', age: 23}
+              ]
           }
       })
 
