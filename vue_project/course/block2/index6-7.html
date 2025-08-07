@@ -7,19 +7,19 @@
 <body>
 <div id="app">
     <h2>
-        <!--  prevent default      -->
+        <!--  prevent default. the click event's propagation will be stopped     -->
         <a href="http://google.com" target="_blank" v-on:click.prevent="">Google</a>
     </h2>
 
     <h2 @:mousemove="handleMouseMove">
         X: {{ x }} \ Y: {{ y }}
 
-        <!--  stop propagation      -->
+        <!--  stop propagation. the submit event will no longer reload the page -->
         <span @:mousemove.stop="">Не изменять</span>
     </h2>
 
     <hr>
-
+    <!-- modifiers can be chained -->
     <input type="text" @:keyup.enter.space="alertValue">
 </div>
 
