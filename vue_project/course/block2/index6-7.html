@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Модификаторы событий клавиатуры</title>
+</head>
+<body>
+<div id="app">
+    <h2>
+        <!--  prevent default      -->
+        <a href="http://google.com" target="_blank" v-on:click.prevent="">Google</a>
+    </h2>
+
+    <h2 @:mousemove="handleMouseMove">
+        X: {{ x }} \ Y: {{ y }}
+
+        <!--  stop propagation      -->
+        <span @:mousemove.stop="">Не изменять</span>
+    </h2>
+
+    <hr>
+
+    <input type="text" @:keyup.enter.space="alertValue">
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+<script>
+
+    new Vue({
+        el: '#app',
+        data: {
+            x:0,
+            y:0,
+        },
+        methods: {
+            handleMouseMove: function(e) {
+                this.x = e.clientX;
+                this.y = e.clientY;
+            },
+            alertValue: function(e) {
+                    alert(e.target.value);
+            }
+        }
+    })
+
+</script>
+</body>
+</html>
