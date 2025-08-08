@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Lists</title>
+</head>
+<body>
+<div id="app">
+
+  <ul>
+    <li v-for="(person, index) of people">{{ index + 1 }}. {{ person.name }} - <b>{{person.age}}</b></li>
+  </ul>
+
+  <hr>
+
+  <ol>
+    <li v-for="num of 4">{{ num }}</li>
+  </ol>
+
+  <hr>
+
+  <ul>
+    <li v-for="(value, key, index) in person"><em>{{index + 1}}</em> <b>{{key}}</b> {{ value }}</li>
+  </ul>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+  new Vue ({
+    el: '#app',
+    data: {
+      people: [
+        {name: 'Vlad', age: 27},
+        {name: 'Max', age: 25},
+        {name: 'Stepan', age: 23},
+        {name: 'Alina', age: 21}
+      ],
+      person: {
+        name: 'Katya',
+        age: 24,
+        occupation: 'Engineer'
+      }
+    }
+  })
+</script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>V-show vs V-if</title>
+</head>
+<body>
+<div id="app">
+
+  <h2 v-show="isVisible">Visible</h2>
+  <h2 v-show="!isVisible">Hidden</h2>
+
+  <button @click="isVisible = !isVisible">Toggle</button>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+  new Vue ({
+    el: '#app',
+    data: {
+      isVisible: true,
+    }
+  })
+</script>
+</body>
+</html>
