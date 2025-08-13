@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lifecycle Hooks</title>
+</head>
+<body>
+<div id="app">
+    <h1>User</h1>
+    <ul>
+        <li>name: {{user.name}}</li>
+        <li>email: {{user.email}}</li>
+        <li>phone: {{user.phone}}</li>
+        <li>site: <a target="_blank" href="'https://'+ user.website"> {{user.website}}</a> </li>
+    </ul>
+    <h1>Search user</h1>
+    <input type="text" v-model="query" />
+    <button @click="getUser(query)">Search</button>
+    <ul v-if="userSearch">
+        <li>name: {{userSearch.name}}</li>
+        <li>email: {{userSearch.email}}</li>
+        <li>phone: {{userSearch.phone}}</li>
+        <li>company: {{userSearch.company.name}}</li>
+    </ul>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
+<script>
+
+    new Vue({
+        el: '#app',
+        data: {
+            user: {},
+            userSearch: null,
+            active: false,
+            query: ''
+        },
+        methods: {
+            getUser(query) {
+                axios.get('https://jsonplaceholder.typicode.com/users/' + query.toString())
+                    .then((response) => {
+                        console.log(response);
+                        this.userSearch = response.data;
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                    })
+            }
+        },
+        created() {
+            console.log('created')
+            axios.get('https://jsonplaceholder.typicode.com/users/1')
+            .then((response) => {
+                console.log(response);
+                this.user = response.data;
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+        },
+        mounted() {
+            console.log('mounted')
+            setTimeout(() => {
+                this.active = true;
+            }, 1000);
+        },
+        updated() {
+            console.log('updated')
+        },
+        beforeDestroy() {
+            console.log('beforeDestroy')
+        }
+    })
+</script>
+</body>
+</html>

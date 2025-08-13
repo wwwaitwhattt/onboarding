@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>V-model for forms</title>
+</head>
+<body>
+  <div id="app">
+      <h1>Checkbox</h1>
+
+      <input type="checkbox" id="checkbox" v-model="checked" />
+      <label for="checkbox">{{ checked }}</label>
+      <hr>
+
+      <input type="checkbox" id="checkbox2" v-model="toggle" />
+      <label for="checkbox2">Checkbox</label>
+      <button @click="toggle = !toggle">Toggle</button>
+      <hr>
+
+      <h3>Отмеченные имена: {{ checkedNames }}</h3>
+
+      <input type="checkbox" id="jack" value="Alina" v-model="checkedNames" />
+      <label for="jack">Alina</label>
+
+      <input type="checkbox" id="john" value="Helga" v-model="checkedNames" />
+      <label for="john">Helga</label>
+
+      <input type="checkbox" id="mike" value="Arnold" v-model="checkedNames" />
+      <label for="mike">Arnold</label>
+
+      <h1>Radio</h1>
+
+      <h3>selected: {{ radioValue }}</h3>
+
+      <input type="radio" id="one" value="one" v-model="radioValue" />
+      <label for="one">one</label>
+      <input type="radio" id="two" value="two" v-model="radioValue" />
+      <label for="two">two</label>
+
+      <h1>Select</h1>
+
+      <h3>selected: {{ selectValue }} </h3>
+      <select v-model="selectValue">
+          <option disabled value = "">Select your option</option>
+          <option value="one">one</option>
+          <option value="two">two</option>
+          <option value="three">three</option>
+      </select>
+
+      <h3>selected: {{ selectValue2 }} </h3>
+      <select v-model="selectValue2" multiple>
+          <option>one</option>
+          <option>two</option>
+          <option>three</option>
+      </select>
+
+      <h1>Динамический список</h1>
+
+      <h3>selected: {{ selected }}</h3>
+      <select v-model="selected">
+          <option v-for="option in options" :value="option.value">
+              {{ option.text }}
+          </option>
+      </select>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+  <script>
+
+      new Vue({
+          el: '#app',
+          data: {
+              checked: true,
+              checkedNames: [],
+              dynamicTrueValue: 'Галочка стоит',
+              dynamicFalseValue: 'Галочки нет',
+              radioValue: [],
+              selectValue: [],
+              selectValue2: [],
+              selected: 'a',
+              options: [
+                  { text: 'Один', value: 'A' },
+                  { text: 'Два', value: 'B' },
+                  { text: 'Три', value: 'C' }
+              ],
+              toggle: true,
+          }
+      })
+
+  </script>
+</body>
+</html>

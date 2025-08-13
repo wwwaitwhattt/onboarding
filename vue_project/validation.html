@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>V-model for forms</title>
+    <style>
+        #form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            width: 500px;
+        }
+        .message {
+            border: 1px solid red;
+            padding: 5px;
+            background-color: rgba(255, 0, 0, 0.11);
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <h1>Form validation</h1>
+    <div>
+        <form id="form" @submit.prevent="onSubmit" novalidate>
+            <label for="name">Enter your full name:</label>
+            <input type="text" id="name" placeholder="Full name" v-model="user.name" />
+
+            <label for="email">Enter your email:</label>
+            <input type="email" id="email" placeholder="Email" v-model="user.email" />
+
+            <label for="password">Enter your password:</label>
+            <input type="password" id="password" placeholder="Password" v-model="user.password" />
+
+            <div class= "message" v-show="errors.length > 0">
+                <li v-for="(error, index) in errors" :key="index">{{error}}</li>
+            </div>
+
+            <button>Sign up</button>
+        </form>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+<script>
+
+    new Vue({
+        el: '#app',
+        data: {
+            user: {
+                name: '',
+                email: '',
+                password: '',
+            },
+            errors: []
+        },
+        methods: {
+            onSubmit() {
+                this.errors = [];
+
+                if (!this.user.name) {
+                    this.errors.push('Name is required');
+                }
+                if (!this.user.email) {
+                    this.errors.push('Email is required');
+                } else {
+                    if(!this.validateEmail(this.user.email)) {
+                        this.errors.push('Invalid email');
+                    }
+                }
+                if (!this.user.password) {
+                    this.errors.push('Password is required');
+                } else {
+                    if (this.user.password.length <= 8) {
+                        this.errors.push('Password must be at least 8 characters long');
+                    }
+                }
+                console.log(this.errors);
+            },
+            validateEmail(email) {
+                let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                return re.test(email);
+            }
+        }
+    })
+
+</script>
+</body>
+</html>
