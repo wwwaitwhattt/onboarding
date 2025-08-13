@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Жизненный цикл компонента</title>
+</head>
+<body>
+<div id="app">
+    <h2>{{ title }}</h2>
+
+    <button @click="title = 'Changed Title'">Title</button>
+    <button @click="doDestroy">Destroy</button>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    new Vue ({
+        el: '#app',
+        data: {
+            title: 'Hi Im Vue!',
+        },
+        methods: {
+          doDestroy: function() {
+              this.$destroy()
+          }
+        },
+        beforeCreate: function() {
+            console.log('beforeCreate'); // прошла инициализация, вью готовится создать приложение
+        },
+        created: function() {
+            console.log('created'); // вью приложение уже создано
+        },
+        beforeMount: function() {
+            console.log('beforeMount'); // начало анализа шаблона, перед вставкой шаблона в #app
+            // собирается вставить скопилированный шаблон в DOM дерево
+        },
+        mounted: function() {
+            console.log('mounted'); // дерево готово, оно вставлено в DOM
+        },
+        beforeUpdate: function() {
+            console.log('beforeUpdate'); // перед внесением изменений в DOM
+        },
+        updated: function() {
+            console.log('updated'); // после
+        },
+        beforeDestroy: function() {
+            console.log('beforeDestroy'); // перед уничтожением элемента
+        },
+        destroyed: function() {
+            console.log('destroyed');
+        }
+    })
+</script>
+</body>
+</html>
