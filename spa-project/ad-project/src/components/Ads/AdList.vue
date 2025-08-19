@@ -1,13 +1,19 @@
-<script lang="ts">
-import {defineComponent} from 'vue'
-
-export default defineComponent({
-name: "AdList"
+<script>
+export default ({
+  data() {
+    return {}
+  }
 })
 </script>
 
 <template>
-  $END$
+  <v-container>
+    <v-layout row>
+      <v-flex xs12>
+        <h1>Ad List</h1>
+      </v-flex>
+    </v-layout>
+  </v-container>
 </template>
 
 <style scoped>
