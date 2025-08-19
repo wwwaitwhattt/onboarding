@@ -14,7 +14,7 @@
     ></app-car>
 
     <button @click="show = !show">Show async</button>
-    <div v-if="show">
+    <div v-show="show">
       <async-component/> <!-- загрузится только после клика по кнопке-->
     </div>
 
@@ -34,7 +34,6 @@ const asyncComponent = () => ({
   component: import("./components/AsyncComponent"),
   loading: LoadingComponent,
   error: ErrorComponent,
-  timeout: 3000,
 })
 
 export default {
