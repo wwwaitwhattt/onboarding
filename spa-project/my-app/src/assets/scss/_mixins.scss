@@ -1,0 +1,12 @@
+@mixin title {
+  font-size: 48px;
+  margin-bottom: 20px;
+
+}
+
+@mixin post-card {
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 20px;
+  width: 49%;
+}
