@@ -47,7 +47,7 @@ export default {
     if (window.confirm('Are you sure you want to leave?')) {
       next()
     } else {
-      next(false)
+      console.log('didnt leave')
     }
   }
 }
