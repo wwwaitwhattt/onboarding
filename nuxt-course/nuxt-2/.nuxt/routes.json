@@ -1,0 +1,37 @@
+[
+  {
+    "name": "about",
+    "path": "/about",
+    "component": "C:\\\\Users\\\\user\\\\Desktop\\\\workhard\\\\onboarding\\\\nuxt-course\\\\nuxt-2\\\\pages\\\\about\\\\index.vue",
+    "chunkName": "pages/about/index",
+    "_name": "_526fe7be"
+  },
+  {
+    "name": "login",
+    "path": "/login",
+    "component": "C:\\\\Users\\\\user\\\\Desktop\\\\workhard\\\\onboarding\\\\nuxt-course\\\\nuxt-2\\\\pages\\\\login.vue",
+    "chunkName": "pages/login",
+    "_name": "_bac4e9c6"
+  },
+  {
+    "name": "users",
+    "path": "/users",
+    "component": "C:\\\\Users\\\\user\\\\Desktop\\\\workhard\\\\onboarding\\\\nuxt-course\\\\nuxt-2\\\\pages\\\\users\\\\index.vue",
+    "chunkName": "pages/users/index",
+    "_name": "_704a5274"
+  },
+  {
+    "name": "index",
+    "path": "/",
+    "component": "C:\\\\Users\\\\user\\\\Desktop\\\\workhard\\\\onboarding\\\\nuxt-course\\\\nuxt-2\\\\pages\\\\index.vue",
+    "chunkName": "pages/index",
+    "_name": "_4e142ff4"
+  },
+  {
+    "name": "users-id",
+    "path": "/users/:id",
+    "component": "C:\\\\Users\\\\user\\\\Desktop\\\\workhard\\\\onboarding\\\\nuxt-course\\\\nuxt-2\\\\pages\\\\users\\\\_id.vue",
+    "chunkName": "pages/users/_id",
+    "_name": "_0f9bd2ae"
+  }
+]
